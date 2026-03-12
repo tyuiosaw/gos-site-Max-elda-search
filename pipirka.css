@@ -1,0 +1,202 @@
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ШАПКА - НАВИГАЦИЯ */
+        .header {
+            background: rgba(0,30,60,0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px; font-weight: 700;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-controls {
+            display: flex; gap: 20px; align-items: center;
+        }
+
+        .search-bar {
+            position: relative; width: 300px;
+            height: 40px; background: rgba(255,255,255,0.1);
+            border-radius: 20px; backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus-within {
+            width: 400px; box-shadow: 0 5px 20px rgba(0,212,255,0.3);
+        }
+
+        .search-input {
+            width: 100%; height: 100%; border: none;
+            outline: none; padding: 0 50px 0 20px;
+            background: transparent; color: #fff;
+            font-size: 16px;
+        }
+
+        .search-btn { 
+            position: absolute; right: 12px; top: 50%;
+            transform: translateY(-50%); color: #00d4ff;
+            font-size: 18px; background: none; border: none;
+            cursor: pointer;
+        }
+
+        /* БОКОВОЕ МЕНЮ */
+        .sidebar {
+            position: fixed; left: 0; top: 80px;
+            width: 250px; height: calc(100vh - 80px);
+            background: rgba(10,20,40,0.98);
+            backdrop-filter: blur(20px);
+            padding: 30px 20px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            overflow-y: auto;
+        }
+
+        .menu-item {
+            display: flex; align-items: center; gap: 15px;
+            padding: 12px 20px; margin-bottom: 8px;
+            color: #b0b0b0; text-decoration: none;
+            border-radius: 12px; transition: all 0.2s;
+            font-size: 15px;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background: rgba(0,212,255,0.2); color: #fff;
+            box-shadow: 0 4px 15px rgba(0,212,255,0.1);
+        }
+
+        /* ГЛАВНЫЙ КОНТЕНТ */
+        .main-content {
+            margin-left: 250px; margin-top: 80px;
+            padding: 30px; max-width: 1400px;
+        }
+
+        .section-header {
+            display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 28px; font-weight: 600;
+            background: linear-gradient(45deg, #fff, #00d4ff);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ПЛЕЙЛИСТЫ И ТРЕКИ */
+        .playlists-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px; margin-bottom: 50px;
+        }
+
+        .playlist-card {
+            background: rgba(20,30,60,0.6);
+            backdrop-filter: blur(15px); border-radius: 20px;
+            padding: 25px; cursor: pointer; transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+            height: 200px; display: flex; flex-direction: column;
+        }
+
+        .playlist-card:hover {
+            transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: rgba(0,212,255,0.5);
+        }
+
+        .playlist-cover {
+            width: 100%; height: 120px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 15px; margin-bottom: 15px;
+        }
+
+        .playlist-title { font-size: 18px; font-weight: 500; margin-bottom: 5px; }
+        .playlist-tracks { color: #a0a0a0; font-size: 14px; }
+
+        /* ПЛЕЕР */
+        .player {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(0,20,50,0.98); backdrop-filter: blur(25px);
+            padding: 20px 50px; border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; gap: 30px;
+        }
+
+        .track-info {
+            display: flex; align-items: center; gap: 20px;
+            min-width: 300px; flex: 1;
+        }
+
+        .track-cover {
+            width: 60px; height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 10px;
+        }
+
+        .track-details h3 { font-size: 16px; margin-bottom: 2px; }
+        .track-details p { color: #a0a0a0; font-size: 14px; }
+
+        .player-controls {
+            display: flex; align-items: center; gap: 25px;
+        }
+
+        .control-btn {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: rgba(255,255,255,0.15); color: #fff;
+            border: none; cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+            transition: all 0.2s; font-size: 18px;
+        }
+
+        .control-btn:hover { background: rgba(0,212,255,0.3); transform: scale(1.1); }
+
+        .play-pause { width: 55px; height: 55px; font-size: 22px; }
+
+        .progress-container {
+            flex: 1; max-width: 500px; margin: 0 40px;
+        }
+
+        .progress-bar {
+            width: 100%; height: 6px; background: rgba(255,255,255,0.2);
+            border-radius: 3px; cursor: pointer; position: relative;
+        }
+
+        .progress-fill {
+            height: 100%; background: linear-gradient(90deg, #00d4ff, #0099cc);
+            border-radius: 3px; width: 40%; transition: width 0.1s;
+        }
+
+        .time-display {
+            display: flex; gap: 15px; font-size: 14px; color: #a0a0a0;
+            margin-top: 5px;
+        }
+
+        .volume-control {
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .volume-bar {
+            width: 100px; height: 4px; background: rgba(255,255,255,0.2);
+            border-radius: 2px; cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); transition: 0.3s; }
+            .main-content { margin-left: 0; }
+            .player { flex-direction: column; gap: 15px; padding: 20px; }
+        }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elda-search</title>
+    <link rel="stylesheet" href="hernya.css">
+</head>
+<body>
+    <div class="bord">
+        <div class="logoh">elda-search</div>
+        <div class="search-container">
+            <form id="searchForm">
+                <input type="search" class="search-input" id="searchInput" placeholder="Введите запрос..." autocomplete="off" >
+                <button class="search-btn" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="results" class="results"></div>
+    <div id="noResults" class="no-results" style="display: none;">Ничего не найдено</div>
+
+    <script>
+        const form = document.getElementById('searchForm');
+        const input = document.getElementById('searchInput');
+        const resultsDiv = document.getElementById('results');
+        const noResultsDiv = document.getElementById('noResults');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = input.value.trim();
+            if (query) {
+                performSearch(query);
+            }
+        });
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                form.dispatchEvent(new Event('submit'));
+            }
+        });
+
+        function performSearch(query) {
+            const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            
+            resultsDiv.innerHTML = `
+                <div class="result-item">
+                    <div class="result-title">Результат поиска по "${query}"</div>
+                    <div class="result-url">${searchUrl}</div>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+            noResultsDiv.style.display = 'none';
+            window.open(searchUrl, '_blank');
+        }
+    </script>
+
+    <footer>
+        <ul class="social-links">
+            <li><a href="https://google.com/" class="google-link" target="_blank" title="на"><i class="fab fa-google"></i></a></li>
+            <li><a href="https://ya.ru/" class="yandex-link" target="_blank" title="хуй"><i class="fas fa-search"></i></a></li>
+            <li><a href="https://music.yandex.ru/" class="music-link" target="_blank" title="иди"><i class="fas fa-music"></i></a></li>
+        </ul>
+
+        <a href="muzhickaya.html" class="big-btn" target="_blank" title="пидорская">мужицкая</a>
+    </footer>
+</body>
+
+</html>
+
+
